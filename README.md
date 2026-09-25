@@ -1,5 +1,6 @@
 # Neon Collector
-================
+
+---
 
 ![Icono del juego](./icon.svg)
 
