@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://mp4ps48m3xyy"]
+
+[ext_resource type="PackedScene" uid="uid://chvqgw8fwbpiv" path="res://scenes/Player.tscn" id="1_elqb8"]
+[ext_resource type="Script" uid="uid://dknb7hejnvm65" path="res://scripts/main.gd" id="1_rvslj"]
+[ext_resource type="PackedScene" uid="uid://dpoq24oa3scg0" path="res://scenes/Orb.tscn" id="2_0bbpv"]
+[ext_resource type="AudioStream" uid="uid://btvoejyocyxc6" path="res://assets/audio/explosion.wav" id="4_rarhs"]
+[ext_resource type="AudioStream" uid="uid://b1336r21bu4lg" path="res://assets/audio/jump.wav" id="5_vcsgt"]
+[ext_resource type="Texture2D" uid="uid://5rnnujaycbsi" path="res://assets/broken_glass.png" id="6_c01mt"]
+
+[node name="Main" type="Node2D" unique_id=2108874726]
+script = ExtResource("1_rvslj")
+orb_scene = ExtResource("2_0bbpv")
+
+[node name="Player" parent="." unique_id=855867228 instance=ExtResource("1_elqb8")]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=919018235]
+
+[node name="ScoreLabel" type="Label" parent="HUD" unique_id=1166993061]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_right = 36.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0.498039, 1)
+theme_override_font_sizes/font_size = 32
+text = "Puntos: 0"
+
+[node name="TimeLabel" type="Label" parent="HUD" unique_id=2078467262]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -52.0
+offset_right = -12.0
+offset_bottom = 45.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0.498039, 1)
+theme_override_font_sizes/font_size = 32
+
+[node name="GameOverPanel" type="PanelContainer" parent="HUD" unique_id=732711338]
+process_mode = 2
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.5
+offset_top = -75.0
+offset_right = 122.5
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/GameOverPanel" unique_id=1395881852]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="HUD/GameOverPanel/VBoxContainer" unique_id=938186917]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0.498039, 1)
+theme_override_font_sizes/font_size = 32
+text = "¡FIN DEL JUEGO!"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="HUD/GameOverPanel/VBoxContainer" unique_id=2093314174]
+layout_mode = 2
+text = "Jugar de nuevo"
+
+[node name="AdButton" type="Button" parent="HUD/GameOverPanel/VBoxContainer" unique_id=2139557128]
+layout_mode = 2
+text = "Ver anuncio (+10s)"
+
+[node name="NoAdsButton" type="Button" parent="HUD/GameOverPanel/VBoxContainer" unique_id=1660481441]
+layout_mode = 2
+text = "Quitar anuncios"
+
+[node name="HighScoreLabel" type="Label" parent="HUD" unique_id=1753031981]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0.498039, 1)
+theme_override_font_sizes/font_size = 32
+
+[node name="Timer" type="Timer" parent="." unique_id=1241430067]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="GameOverAudio" type="AudioStreamPlayer" parent="." unique_id=652334902]
+process_mode = 3
+stream = ExtResource("4_rarhs")
+
+[node name="StartAudio" type="AudioStreamPlayer" parent="." unique_id=941047252]
+process_mode = 3
+stream = ExtResource("5_vcsgt")
+
+[node name="CrackEffect" type="Sprite2D" parent="." unique_id=1512896190]
+visible = false
+texture = ExtResource("6_c01mt")
+
+[connection signal="pressed" from="HUD/GameOverPanel/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

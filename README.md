@@ -15,7 +15,7 @@ Puedes extender el tiempo de juego mediante anuncios o eliminarlos directamente 
 
 **Tecnologías utilizadas**
 
-* Godot 3.2 o superior
+* Godot 4.7 o superior
 * GDScript
 * AdMob
 * GooglePlayBilling

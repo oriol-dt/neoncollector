@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Filtros de Brillo Neón -->
+    <filter id="glowCyan" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur1"/>
+      <feGaussianBlur stdDeviation="20" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="glowPink" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur1"/>
+      <feGaussianBlur stdDeviation="16" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Degradados -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#120826"/>
+      <stop offset="100%" stop-color="#05020a"/>
+    </radialGradient>
+
+    <radialGradient id="orbGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#00ffff"/>
+      <stop offset="85%" stop-color="#0088ff"/>
+      <stop offset="100%" stop-color="#002266"/>
+    </radialGradient>
+
+    <linearGradient id="playerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff007f"/>
+      <stop offset="100%" stop-color="#7900ff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo oscuro -->
+  <rect width="512" height="512" rx="96" fill="url(#bgGrad)"/>
+
+  <!-- Cuadrícula Retro Grid de Fondo -->
+  <g stroke="#1e1035" stroke-width="2">
+    <line x1="64" y1="0" x2="64" y2="512"/>
+    <line x1="128" y1="0" x2="128" y2="512"/>
+    <line x1="192" y1="0" x2="192" y2="512"/>
+    <line x1="256" y1="0" x2="256" y2="512"/>
+    <line x1="320" y1="0" x2="320" y2="512"/>
+    <line x1="384" y1="0" x2="384" y2="512"/>
+    <line x1="448" y1="0" x2="448" y2="512"/>
+    <line x1="0" y1="64" x2="512" y2="64"/>
+    <line x1="0" y1="128" x2="512" y2="128"/>
+    <line x1="0" y1="192" x2="512" y2="192"/>
+    <line x1="0" y1="256" x2="512" y2="256"/>
+    <line x1="0" y1="320" x2="512" y2="320"/>
+    <line x1="0" y1="384" x2="512" y2="384"/>
+    <line x1="0" y1="448" x2="512" y2="448"/>
+  </g>
+
+  <!-- Nave/Recolector (Player) -->
+  <polygon points="256,110 370,370 256,310 142,370" fill="url(#playerGrad)" stroke="#ff66cc" stroke-width="4" filter="url(#glowPink)"/>
+
+  <!-- Orbe Neón (Orb) -->
+  <circle cx="256" cy="180" r="42" fill="url(#orbGrad)" stroke="#ffffff" stroke-width="3" filter="url(#glowCyan)"/>
+  
+  <!-- Anillo de energía exterior -->
+  <circle cx="256" cy="180" r="58" fill="none" stroke="#00ffff" stroke-width="3" stroke-dasharray="12 8" opacity="0.8" filter="url(#glowCyan)"/>
+</svg>

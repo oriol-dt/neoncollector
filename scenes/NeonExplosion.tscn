@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw1r10lg3lfip"]
+
+[ext_resource type="Script" uid="uid://dyaeos16dl3kh" path="res://scripts/neon_explosion.gd" id="1_vj6p5"]
+
+[node name="NeonExplosion" type="CPUParticles2D"]
+emitting = false
+amount = 20
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color = Color(1, 0, 0.498039, 1)
+script = ExtResource("1_vj6p5")
